@@ -7,23 +7,19 @@ metadata:
   name: nginx-deployment
   namespace: giropops
 spec:
-  replicas:  24
-  revisionHistoryLimit: 10
+  replicas:  14
   selector:
      matchLabels:      
        app: nginx-deployment
   strategy: 
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 0
-      maxUnavailable: 1
+    type: Recreate 
   template: 
     metadata:
       labels:
         app: nginx-deployment     
     spec:
       containers:
-        - image: nginx:1.14.0
+        - image: nginx:1.17.0
           name: nginx
           resources:
             limits:
